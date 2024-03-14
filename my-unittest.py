@@ -1,18 +1,19 @@
 import unittest
-from main import calculate_work_duration
+
+
+from main import final_result, check_forward, check_backwards
 
 
 class WorkDurationTest(unittest.TestCase):
 
     def test_first(self):
-        self.assertEqual(calculate_work_duration(5, 10, [10, 20, 30, 10, 5]), 300)
+        self.assertEqual(final_result(3, 10, [50, 20, 20, 20, 20, 20, 35]), 700)
 
     def test_second(self):
-        self.assertEqual(
-            calculate_work_duration(5, 10, [10, 20, 30, 10, 5, 10, 40, 20, 10, 15]), 600)
+        self.assertEqual(final_result(3, 10, [100, 20, 20, 20, 20, 20]), 1000)
 
     def test_third(self):
-        self.assertEqual(calculate_work_duration(5, 10, [40, 10, 20]), 400)
+        self.assertEqual(final_result(2, 10, [100, 110, 80, 90, 120, 100]), 3100)
 
 
 if __name__ == "__main__":
