@@ -48,6 +48,7 @@ class PriorityQueue:
             self._inorder_traversal(node.left, result)
             result.append((node.value, node.priority))
             self._inorder_traversal(node.right, result)
+        return result
 
     def display(self):
         result = []
