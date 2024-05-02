@@ -1,5 +1,3 @@
-# src/needle_in_haystack.py
-
 def find_needle_in_haystack(haystack, needle):
     def compute_lps_array(needle):
         length = 0
