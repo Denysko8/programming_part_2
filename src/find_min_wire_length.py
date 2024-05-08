@@ -1,24 +1,40 @@
 import csv
+from typing import Dict
 
 
-def read_data():
-    file_path = "../materials/communication_wells.csv"
+def read_data(file_path:str)->Dict[str, Dict[str, int]]:
+    """
+    This function reads data about connections between wells from a CSV file.
+
+    Returns:
+        dict: A data structure of the graph, where each vertex is represented as a key,
+        and the value is a dictionary containing neighboring vertices and distances to them.
+    """
     graph = {}
     with open(file_path, "r") as file:
         reader = csv.reader(file)
         for row in reader:
-            well1, well2, distance = row[0].split(", ")
-            if well1 not in graph:
-                graph[well1] = {}
-            if well2 not in graph:
-                graph[well2] = {}
-            graph[well1][well2] = int(distance)
-            graph[well2][well1] = int(distance)
+            if row:
+                well1, well2, distance = row[0].split(", ")
+                if well1 not in graph:
+                    graph[well1] = {}
+                if well2 not in graph:
+                    graph[well2] = {}
+                graph[well1][well2] = int(distance)
+                graph[well2][well1] = int(distance)
     return graph
 
 
 def minimum_spanning_tree(graph):
-    min_heap = [(0, "K1")]
+    """
+    This function finds the minimum spanning tree in the graph using a greedy algorithm.
+    Args:
+        graph (dict): The graph represented as a dictionary, where the keys are vertices,
+        and the values are their neighbors and distances to them.
+    Returns:
+        int: The total distance of the minimum spanning tree.
+    """
+    min_heap = [(0, "K1")] if "K1" in graph else []
     visited = set()
     total_distance = 0
 
@@ -31,15 +47,6 @@ def minimum_spanning_tree(graph):
                 if neighbor not in visited:
                     min_heap.append((neighbor_distance, neighbor))
             min_heap.sort()
+    if total_distance == 0:
+        return -1
     return total_distance
-
-
-# def main():
-#     file_path = "../materials/communication_wells.csv"
-#     graph = read_data(file_path)
-#     total_distance = minimum_spanning_tree(graph)
-#     print("Мінімальна довжина оптоволоконного кабелю:", total_distance)
-#
-#
-# if __name__ == "__main__":
-#     main()
