@@ -1,5 +1,5 @@
 import unittest
-from programming_part_2.src.find_min_wire_length import read_data, minimum_spanning_tree
+from src.find_min_wire_length import read_data, minimum_spanning_tree
 
 
 class TestMinimumSpanningTree(unittest.TestCase):
