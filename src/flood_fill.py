@@ -32,8 +32,10 @@ def write_output_file(filename, matrix):
 
 
 def main():
+
     input_filename = '../materials/5-input.txt'
     output_filename = '../materials/5-output.txt'
+
 
     height, width, start, new_color, matrix = read_input_file(input_filename)
     result_matrix = flood_fill(matrix, start, matrix[start[0]][start[1]], new_color)
