@@ -1,14 +1,24 @@
 import math
 
-def max_wire_length(w, max_heights):
-    n = len(max_heights)
-    max_diff = max(max_height - 1 for max_height in max_heights)
-    max_length = (n - 1) * math.hypot(w, max_diff)
+
+def max_path_length(width, heights):
+    heights_amount = len(heights)
+    path_length = [[0] * (h + 1) for h in heights]
+
+    for height in range(1, heights[0] + 1):
+        path_length[0][height] = 0
+    for i in range(1, heights_amount):
+        for height_2 in range(1, heights[i] + 1):
+            path_length[i][height_2] = max(
+                path_length[i - 1][height1]
+                + calculate_distance(width, height1, height_2)
+                for height1 in range(1, heights[i - 1] + 1)
+            )
+
+    max_length = max(path_length[-1])
+
     return round(max_length, 2)
 
-print(max_wire_length(2, [3, 3, 3]))  # Output: 5.66
-print(max_wire_length(100, [1, 1, 1, 1]))  # Output: 300.0
-print(max_wire_length(4, [100, 2, 100, 2, 100]))  # Output: 396.32
 
-heights = [56, 18, 17, 94, 23, 7, 21, 94, 29, 54, 44, 26, 86, 79, 4, 15, 5, 91, 25, 17, 88, 66, 28, 2, 95, 97, 60, 93, 40, 70, 75, 48, 38, 51, 34, 52, 87, 8, 62, 77, 35, 52, 3, 93, 34, 57, 51, 11, 39, 72]
-print(max_wire_length(4, heights))  # Output: 2738.18
+def calculate_distance(width, height1, height2):
+    return math.sqrt(width**2 + (height2 - height1) ** 2)

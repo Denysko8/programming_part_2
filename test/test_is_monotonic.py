@@ -1,6 +1,6 @@
 import unittest
 
-from is_monotonic import is_monotonic
+from src.is_monotonic import is_monotonic
 
 
 class TestIsMonotonic(unittest.TestCase):

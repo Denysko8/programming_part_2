@@ -1,6 +1,6 @@
 import unittest
 
-from find_min_painting_time import final_result, check_forward, check_backwards
+from src.find_min_painting_time import final_result, check_forward, check_backwards
 
 
 class WorkDurationTest(unittest.TestCase):
