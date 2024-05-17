@@ -6,8 +6,8 @@ class TestFloodFill(unittest.TestCase):
     def test_flood_fill(self):
         input_filename = 'input_test.txt'
         with open(input_filename, 'w') as file:
-            file.write('4,4\n')
-            file.write('2,2\n')
+            file.write('4, 4\n')
+            file.write('2, 2\n')
             file.write('X\n')
             file.write('O, X, X, O\n')
             file.write('X, X, O, X\n')
@@ -22,9 +22,9 @@ class TestFloodFill(unittest.TestCase):
 
         expected_result = [
             ['O', 'X', 'X', 'O'],
-            ['X', 'X', 'O', 'X'],
-            ['X', 'X', 'O', 'O'],
-            ['O', 'O', 'O', 'O']
+            ['X', 'X', 'X', 'X'],
+            ['X', 'X', 'X', 'X'],
+            ['X', 'X', 'X', 'X']
         ]
         with open(output_filename, 'r') as file:
             actual_result = [list(map(str.strip, line.strip().split(', '))) for line in file]
