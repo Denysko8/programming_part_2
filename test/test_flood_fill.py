@@ -1,5 +1,5 @@
 import unittest
-from flood_fill import flood_fill, read_input_file, write_output_file
+from src.flood_fill import flood_fill, read_input_file, write_output_file
 
 
 class TestFloodFill(unittest.TestCase):

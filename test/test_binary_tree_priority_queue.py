@@ -1,5 +1,5 @@
 import unittest
-from binary_tree_priority_queue import Node, PriorityQueue
+from src.binary_tree_priority_queue import Node, PriorityQueue
 
 class TestPriorityQueue(unittest.TestCase):
     def test_normal_insertion(self):

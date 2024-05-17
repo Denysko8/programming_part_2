@@ -1,6 +1,6 @@
 import unittest
 
-from programming_part_2.src.find_min_beer_types import min_amount_of_beer_types
+from src.find_min_beer_types import min_amount_of_beer_types
 
 
 class TestMinAmountOfBeerTypes(unittest.TestCase):

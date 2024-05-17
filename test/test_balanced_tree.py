@@ -1,6 +1,6 @@
 import unittest
 
-from main import BinaryTree, is_tree_balanced, height
+from src.balanced_tree import BinaryTree, is_tree_balanced
 
 
 class TestIsTreeBalanced(unittest.TestCase):
